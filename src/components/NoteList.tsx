@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import NewPost from "./NewPost";
 import Note from "./Note";
 
-const NoteList = () => {
+const NoteList = ({ newNote, hideModal }: any) => {
   const [enteredBody, setEnteredBody] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
-  const [modalVisible, setModalVisible] = useState(true);
 
   const bodyChangeHandler = (e: any) => {
     setEnteredBody(e.target.value);
@@ -16,14 +15,10 @@ const NoteList = () => {
     setEnteredAuthor(e.target.value);
   };
 
-  const modalShowHandler = () => {
-    setModalVisible(!modalVisible);
-  };
-
   return (
     <div className="pt-24">
-      {modalVisible && (
-        <Modal onClickModal={modalShowHandler}>
+      {newNote && (
+        <Modal onClickModal={hideModal}>
           <NewPost
             onBodyChange={bodyChangeHandler}
             onAuthorChange={authorChangeHandler}
