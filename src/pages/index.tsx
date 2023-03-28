@@ -4,7 +4,7 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 
 export default function Home() {
-  const [modalVisible, setModalVisible] = useState(true);
+  const [modalVisible, setModalVisible] = useState(false);
   const modalShowHandler = () => {
     setModalVisible(!modalVisible);
   };
@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
 
       {/* the main app body */}
-      <Navbar createNote={modalShowHandler} />
+      <Navbar onCreateNote={modalShowHandler} />
       <NoteList newNote={modalVisible} hideModal={modalShowHandler} />
     </>
   );
