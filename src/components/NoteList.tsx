@@ -12,10 +12,18 @@ const NoteList = ({ newNote, hideModal }: any) => {
         "https://notes-bbb9b-default-rtdb.firebaseio.com/notes.json"
       );
       const resData = await res.json();
-      setNotes(resData);
-      console.log(resData);
-    }
 
+      const loadedNotes = [];
+
+      for (const key in resData) {
+        loadedNotes.push({
+          id: key,
+          author: resData[key].author,
+          body: resData[key].body,
+        });
+      }
+      setNotes(loadedNotes);
+    }
     fetchNotes();
   }, []);
 
@@ -46,13 +54,13 @@ const NoteList = ({ newNote, hideModal }: any) => {
       )}
 
       <ul className="max-w-[50rem] grid grid-cols-3 ">
-        {/* {notes.map((eachNote) => (
+        {notes.map((eachNote) => (
           <Note
             key={eachNote.body}
             author={eachNote.author}
             body={eachNote.body}
           />
-        ))} */}
+        ))}
       </ul>
     </div>
   );
