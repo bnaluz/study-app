@@ -4,6 +4,7 @@ type NewPostProps = {
   onCancel: any;
   onAddNote: any;
 };
+
 function NewPost({ onCancel, onAddNote }: NewPostProps) {
   const [enteredBody, setEnteredBody] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
@@ -27,7 +28,7 @@ function NewPost({ onCancel, onAddNote }: NewPostProps) {
   };
 
   return (
-    <form className="bg-slate-500 pb-4 w-96" onSubmit={submitHandler}>
+    <form className="bg-slate-500 pb-4 w-[450px]" onSubmit={submitHandler}>
       <p>
         <label className="block font-bold text-center p-1" htmlFor="body">
           Note
